@@ -1,0 +1,2 @@
+mysqldump -u root -p ebear_rest_crud_demo > ebear_rest_crud_demo.sql
+mysql -u root -p ebear_rest_crud_demo < ebear_rest_crud_demo.sql
