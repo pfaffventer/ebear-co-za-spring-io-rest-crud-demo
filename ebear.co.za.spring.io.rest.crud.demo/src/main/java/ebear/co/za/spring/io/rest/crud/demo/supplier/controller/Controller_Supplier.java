@@ -1,4 +1,4 @@
-package ebear.co.za.spring.io.rest.crud.demo.controller.Supplier;
+package ebear.co.za.spring.io.rest.crud.demo.supplier.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,4 +1,4 @@
-package ebear.co.za.spring.io.rest.crud.demo.controller.trade.item;
+package ebear.co.za.spring.io.rest.crud.demo.trade.item.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;

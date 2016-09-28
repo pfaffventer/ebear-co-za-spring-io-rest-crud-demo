@@ -25,6 +25,8 @@ public class LogModel {
 	public LogModel(LogRecord log) {
 		super();
 		this.logUser = log.getLogUser();
+		this.code = log.getCode();
+		this.description = log.getDescription();
 	}
 
 	public String getCode() {
