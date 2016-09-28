@@ -1,4 +1,4 @@
-package ebear.co.za.spring.io.rest.crud.demo.query.controller;
+package ebear.co.za.spring.io.rest.crud.demo.controller.query;
 
 import java.util.List;
 
@@ -6,22 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ebear.co.za.spring.io.rest.crud.demo.query.model.TradeItemQuery;
-import ebear.co.za.spring.io.rest.crud.demo.query.repository.QueryRepository;
+import ebear.co.za.spring.io.rest.crud.demo.model.query.TradeItemQuery;
+import ebear.co.za.spring.io.rest.crud.demo.repository.query.QueryRepository;
 
 @RestController
-public class QueryController {
+public class Controller_Query {
 
 	private final QueryRepository queryRepository;
 
 	@Autowired
-	QueryController(QueryRepository queryRepository) {
+	Controller_Query(QueryRepository queryRepository) {
 		this.queryRepository = queryRepository;
 
 	}
 
 	@RequestMapping("/tradeItems/query")
-	List<TradeItemQuery> commodityQuery() {
+	List<TradeItemQuery> tradeItemQuery() {
 		return queryRepository.tradeItemQuery();
 	}
 

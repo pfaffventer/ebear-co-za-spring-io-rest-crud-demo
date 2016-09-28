@@ -1,4 +1,4 @@
-package ebear.co.za.spring.io.rest.crud.demo.query.model;
+package ebear.co.za.spring.io.rest.crud.demo.model.query;
 
 import java.sql.Timestamp;
 

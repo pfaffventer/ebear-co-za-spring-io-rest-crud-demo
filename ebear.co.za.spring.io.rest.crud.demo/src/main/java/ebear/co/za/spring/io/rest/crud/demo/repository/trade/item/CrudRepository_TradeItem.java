@@ -9,6 +9,8 @@ import ebear.co.za.spring.io.rest.crud.demo.model.trade.item.TradeItem;
 
 public interface CrudRepository_TradeItem extends CrudRepository<TradeItem, Long> {
 
-	List<TradeItem> findById(@Param("id") long id);
+	TradeItem findById(@Param("id") long id);
+	
+	List<TradeItem> findAll();
 
 }
