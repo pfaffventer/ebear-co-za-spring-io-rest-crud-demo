@@ -1,4 +1,4 @@
-package ebear.co.za.spring.io.rest.crud.demo.model.base;
+package ebear.co.za.spring.io.rest.crud.demo.base.model;
 
 public class LogRecord {
 

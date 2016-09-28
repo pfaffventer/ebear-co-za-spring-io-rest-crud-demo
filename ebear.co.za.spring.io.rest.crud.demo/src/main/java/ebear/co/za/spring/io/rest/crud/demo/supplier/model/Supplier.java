@@ -7,8 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-import ebear.co.za.spring.io.rest.crud.demo.model.base.LogModel;
-import ebear.co.za.spring.io.rest.crud.demo.model.base.LogRecord;
+import ebear.co.za.spring.io.rest.crud.demo.base.model.LogModel;
+import ebear.co.za.spring.io.rest.crud.demo.base.model.LogRecord;
 
 @Entity
 @Table(name = "SUPPLIER", uniqueConstraints=@UniqueConstraint(columnNames={"CODE"}))

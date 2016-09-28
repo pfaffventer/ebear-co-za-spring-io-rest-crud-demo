@@ -11,8 +11,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-import ebear.co.za.spring.io.rest.crud.demo.model.base.LogModel;
-import ebear.co.za.spring.io.rest.crud.demo.model.base.LogRecord;
+import ebear.co.za.spring.io.rest.crud.demo.base.model.LogModel;
+import ebear.co.za.spring.io.rest.crud.demo.base.model.LogRecord;
 
 @Entity
 @Table(name = "TRADE_ITEM_CATEGORY", uniqueConstraints=@UniqueConstraint(columnNames={"CODE"}))
