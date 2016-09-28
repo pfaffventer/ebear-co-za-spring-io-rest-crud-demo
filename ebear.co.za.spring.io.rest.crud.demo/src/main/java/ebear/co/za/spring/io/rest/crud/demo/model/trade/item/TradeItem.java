@@ -14,7 +14,7 @@ import ebear.co.za.spring.io.rest.crud.demo.model.base.LogModel;
 import ebear.co.za.spring.io.rest.crud.demo.model.base.LogRecord;
 
 @Entity
-@Table(name = "TRADE_ITEM", uniqueConstraints=@UniqueConstraint(columnNames={"ITEM_CODE"}))
+@Table(name = "TRADE_ITEM", uniqueConstraints=@UniqueConstraint(columnNames={"CODE"}))
 public class TradeItem extends LogModel {
 
 	@Id
@@ -22,22 +22,14 @@ public class TradeItem extends LogModel {
     @GeneratedValue
     private long id;
 
-	@Column(name = "ITEM_CODE",columnDefinition = "VARCHAR(50) NOT NULL")
-	private String itemCode;
-
-	@Column(name = "DESCRIPTION",columnDefinition = "VARCHAR(255) NOT NULL")
-	private String description;
-
 	@ManyToOne
 	@JoinColumn(name = "CATEGORY_ID")
 	private TradeItemCategory tradeItemCategory;
 	
 	public TradeItem() {}
 
-	public TradeItem(LogRecord log, String itemCode, String description, TradeItemCategory tradeItemCategory) {
+	public TradeItem(LogRecord log, TradeItemCategory tradeItemCategory) {
 		super(log);
-		this.itemCode = itemCode;
-		this.description = description;
 		this.tradeItemCategory = tradeItemCategory;
 	}
 
@@ -49,22 +41,6 @@ public class TradeItem extends LogModel {
 		this.id = id;
 	}
 
-	public String getItemCode() {
-		return itemCode;
-	}
-
-	public void setItemCode(String itemCode) {
-		this.itemCode = itemCode;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	public TradeItemCategory getTradeItemCategory() {
 		return tradeItemCategory;
 	}
@@ -73,4 +49,6 @@ public class TradeItem extends LogModel {
 		this.tradeItemCategory = tradeItemCategory;
 	}
 
+	
+	
 }

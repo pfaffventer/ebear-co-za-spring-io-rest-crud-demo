@@ -25,7 +25,7 @@ public class QueryRepository implements Repository<String, Long> {
 
 	public List<TradeItemQuery> tradeItemQuery() {
 		sql = "select"
-				+ "  i.item_code"
+				+ "  i.code"
 				+ " ,i.description"
 				+ " ,i.log_time"
 				+ " ,i.log_user"

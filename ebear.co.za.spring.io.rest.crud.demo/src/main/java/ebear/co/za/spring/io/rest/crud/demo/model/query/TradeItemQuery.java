@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class TradeItemQuery {
 	
-	private String itemCode;
+	private String code;
 	private String description;
 	private Timestamp logTime;
 	private String logUser;
@@ -14,20 +14,20 @@ public class TradeItemQuery {
 		// TODO Auto-generated constructor stub
 	}
 
-	public TradeItemQuery(String itemCode, String description, Timestamp logTime, String logUser) {
+	public TradeItemQuery(String code, String description, Timestamp logTime, String logUser) {
 		super();
-		this.itemCode = itemCode;
+		this.code = code;
 		this.description = description;
 		this.logTime = logTime;
 		this.logUser = logUser;
 	}
 
-	public String getItemCode() {
-		return itemCode;
+	public String getCode() {
+		return code;
 	}
 
-	public void setItemCode(String itemCode) {
-		this.itemCode = itemCode;
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	public String getDescription() {
