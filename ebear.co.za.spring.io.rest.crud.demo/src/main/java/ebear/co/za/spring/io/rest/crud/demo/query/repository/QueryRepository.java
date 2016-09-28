@@ -1,4 +1,4 @@
-package ebear.co.za.spring.io.rest.crud.demo.repository.query;
+package ebear.co.za.spring.io.rest.crud.demo.query.repository;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
-import ebear.co.za.spring.io.rest.crud.demo.model.query.TradeItemQuery;
+import ebear.co.za.spring.io.rest.crud.demo.query.model.TradeItemQuery;
 
 @Service
 public class QueryRepository implements Repository<String, Long> {

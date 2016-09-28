@@ -1,4 +1,4 @@
-package ebear.co.za.spring.io.rest.crud.demo.model.supplier;
+package ebear.co.za.spring.io.rest.crud.demo.supplier.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

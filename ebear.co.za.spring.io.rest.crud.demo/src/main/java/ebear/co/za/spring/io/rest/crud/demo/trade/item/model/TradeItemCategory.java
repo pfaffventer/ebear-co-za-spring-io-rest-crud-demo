@@ -1,4 +1,4 @@
-package ebear.co.za.spring.io.rest.crud.demo.model.trade.item;
+package ebear.co.za.spring.io.rest.crud.demo.trade.item.model;
 
 import java.util.Set;
 
