@@ -116,8 +116,21 @@ public class Controller_Supplier {
 	}
 
 
-	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	//SAVE SUPPLIER
+	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	 * READ SUPPLIER
+	 *
+	 * GET - read supplier where supplier_id = ?
+	 */
+	@RequestMapping("/supplier/save/")
+	public ResponseEntity<Supplier> save(@RequestBody Supplier supplierToSave) {
+		Supplier supplier = null;
+		try {
+			supplier = supplierRepository.save(supplierToSave);
+		} catch (Exception e) {
+			return new ResponseEntity<Supplier>(supplier, HttpStatus.NOT_EXTENDED);	
+		}
+		return new ResponseEntity<Supplier>(supplier, HttpStatus.OK);		
+	}
 
 
 }

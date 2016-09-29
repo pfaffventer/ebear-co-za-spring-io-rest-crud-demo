@@ -3,17 +3,21 @@ package ebear.co.za.spring.io.rest.crud.demo;
 import org.junit.Test;
 
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 
 import ebear.co.za.spring.io.rest.crud.demo.base.model.LogRecord;
 import ebear.co.za.spring.io.rest.crud.demo.supplier.model.Supplier;
+import ebear.co.za.spring.io.rest.crud.demo.supplier.repository.CrudRepository_Supplier;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ApplicationTests {
 
+	@Autowired
+	CrudRepository_Supplier supplierRepository;
 	
 	public static final String REST_SERVICE_URI = "http://localhost:8080";
 
@@ -61,6 +65,17 @@ public class ApplicationTests {
 		System.out.println(":) DONE TESTING: " + supplier.getSupplierCode());
 	}
 
-
+	/*
+	 * TEST - save
+	 */
+	@Test
+	public void testSupplierSave() {
+		RestTemplate restTemplate = new RestTemplate();
+		System.out.println(":) Testing /supplier/save/ ***");
+		Supplier testUpdate = supplierRepository.findById(1);
+		testUpdate.setSupplierDescription("Nome Fisheries AK");
+		Supplier supplier = restTemplate.postForObject(REST_SERVICE_URI + "/supplier/save/", testUpdate, Supplier.class);
+		System.out.println(":) DONE TESTING: " + supplier.getSupplierDescription());
+	}
 
 }
