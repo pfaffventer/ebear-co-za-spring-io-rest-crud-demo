@@ -119,17 +119,20 @@ public class Controller_Supplier {
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	 * READ SUPPLIER
 	 *
-	 * GET - read supplier where supplier_id = ?
+	 * POST - read supplier where supplier_id = ?
 	 */
 	@RequestMapping("/supplier/save/")
 	public ResponseEntity<Supplier> save(@RequestBody Supplier supplierToSave) {
-		Supplier supplier = null;
+		Supplier currentSupplier = null;
+		Supplier savedSupplier = null;
 		try {
-			supplier = supplierRepository.save(supplierToSave);
+			currentSupplier = supplierRepository.findBySupplierCode(supplierToSave.getSupplierCode());
+			currentSupplier.setSupplierDescription(supplierToSave.getSupplierDescription());
+			savedSupplier = supplierRepository.save(currentSupplier);
 		} catch (Exception e) {
-			return new ResponseEntity<Supplier>(supplier, HttpStatus.NOT_EXTENDED);	
+			return new ResponseEntity<Supplier>(savedSupplier, HttpStatus.NOT_EXTENDED);	
 		}
-		return new ResponseEntity<Supplier>(supplier, HttpStatus.OK);		
+		return new ResponseEntity<Supplier>(savedSupplier, HttpStatus.OK);		
 	}
 
 
