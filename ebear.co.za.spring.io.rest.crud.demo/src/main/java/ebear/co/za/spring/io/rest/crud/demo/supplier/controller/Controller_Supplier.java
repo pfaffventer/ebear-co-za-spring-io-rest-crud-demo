@@ -13,23 +13,23 @@ public class Controller_Supplier {
 	CrudRepository_Supplier supplierRepository;
 
 	@RequestMapping("/create")
-	public String create(String code) {
+	public String create(String supplierCode) {
 		try {
 		} catch (Exception e) {
 			return "Error creating supplier: " + e.toString();
 		}
-		return "Supplier id: " + code + " succesfully created";
+		return "Supplier id: " + supplierCode + " succesfully created";
 	}
 
 
 	@RequestMapping("/delete")
-	public String delete(String code) {
+	public String delete(String supplierCode) {
 		try {
 		}
 		catch (Exception e) {
 			return "Error deleting supplier:" + e.toString();
 		}
-		return "Supplier id: " + code + " succesfully created";
+		return "Supplier id: " + supplierCode + " succesfully created";
 	}
 
 }

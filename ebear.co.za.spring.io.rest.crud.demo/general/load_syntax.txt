@@ -2,48 +2,48 @@
 //	public CommandLineRunner loadLegacy(CrudRepository_Supplier supplierRepository) {
 //		return (args) -> {
 //			String user = System.getProperty("user.name");
-//			supplierRepository.save(new Supplier(new LogRecord(user,"NFS001","Nome Fisheries AK")));
-//			supplierRepository.save(new Supplier(new LogRecord(user,"GBH001","Glacier Bay Home Depot")));
-//			supplierRepository.save(new Supplier(new LogRecord(user,"ASS001","Alaska Sausage & Seafood Company")));
-//			supplierRepository.save(new Supplier(new LogRecord(user,"GBN001","Glacier Bay National Park")));
-//			supplierRepository.save(new Supplier(new LogRecord(user,"WAK001","Wild Alaska")));
-//			supplierRepository.save(new Supplier(new LogRecord(user,"GAS001","Great Alaska Seafood")));
-//			supplierRepository.save(new Supplier(new LogRecord(user,"MSB001","Midnight Sun Brewing Company")));
+//			supplierRepository.save(new Supplier(new LogRecord(user),"NFS001","Nome Fisheries AK"));
+//			supplierRepository.save(new Supplier(new LogRecord(user),"GBH001","Glacier Bay Home Depot"));
+//			supplierRepository.save(new Supplier(new LogRecord(user),"ASS001","Alaska Sausage & Seafood Company"));
+//			supplierRepository.save(new Supplier(new LogRecord(user),"GBN001","Glacier Bay National Park"));
+//			supplierRepository.save(new Supplier(new LogRecord(user),"WAK001","Wild Alaska"));
+//			supplierRepository.save(new Supplier(new LogRecord(user),"GAS001","Great Alaska Seafood"));
+//			supplierRepository.save(new Supplier(new LogRecord(user),"MSB001","Midnight Sun Brewing Company"));
 //		};
 //	}
+
 
 //	@Bean
 //	public CommandLineRunner loadLegacy(
-//			 CrudRepository_TradeItem tradeItemRepository
+//			CrudRepository_TradeItem tradeItemRepository
 //			,CrudRepository_TradeItemCategory tradeItemCategoryRepository) {
 //		return (args) -> {
-//			
+//
 //			String user = System.getProperty("user.name");
 //
-//			tradeItemCategoryRepository.save(new TradeItemCategory(new LogRecord(user,"CLASS A","CLASS A")));
-//			tradeItemCategoryRepository.save(new TradeItemCategory(new LogRecord(user,"CLASS B","CLASS B")));
-//			tradeItemCategoryRepository.save(new TradeItemCategory(new LogRecord(user,"CLASS C","CLASS C")));
-//			tradeItemCategoryRepository.save(new TradeItemCategory(new LogRecord(user,"CLASS D","CLASS D")));
-//			tradeItemCategoryRepository.save(new TradeItemCategory(new LogRecord(user,"CLASS E","CLASS E")));
-//			tradeItemCategoryRepository.save(new TradeItemCategory(new LogRecord(user,"CLASS F","CLASS F")));
-//			tradeItemCategoryRepository.save(new TradeItemCategory(new LogRecord(user,"CLASS G","CLASS G")));
+//			tradeItemCategoryRepository.save(new TradeItemCategory(new LogRecord(user),"CLASS A","CLASS A"));
+//			tradeItemCategoryRepository.save(new TradeItemCategory(new LogRecord(user),"CLASS B","CLASS B"));
+//			tradeItemCategoryRepository.save(new TradeItemCategory(new LogRecord(user),"CLASS C","CLASS C"));
+//			tradeItemCategoryRepository.save(new TradeItemCategory(new LogRecord(user),"CLASS D","CLASS D"));
+//			tradeItemCategoryRepository.save(new TradeItemCategory(new LogRecord(user),"CLASS E","CLASS E"));
+//			tradeItemCategoryRepository.save(new TradeItemCategory(new LogRecord(user),"CLASS F","CLASS F"));
+//			tradeItemCategoryRepository.save(new TradeItemCategory(new LogRecord(user),"CLASS G","CLASS G"));
 //
-//			tradeItemRepository.save(new TradeItem(new LogRecord(user,"0000000001","Honey"),tradeItemCategoryRepository.findById(1)));
-//			tradeItemRepository.save(new TradeItem(new LogRecord(user,"0000000002","Steelhead Salmon"),tradeItemCategoryRepository.findById(1)));
-//			tradeItemRepository.save(new TradeItem(new LogRecord(user,"0000000003","Sockeye Salmon"),tradeItemCategoryRepository.findById(1)));
-//			tradeItemRepository.save(new TradeItem(new LogRecord(user,"0000000004","Rainbow Trout"),tradeItemCategoryRepository.findById(1)));
-//			tradeItemRepository.save(new TradeItem(new LogRecord(user,"0000000005","Sarsaparilla Berries"),tradeItemCategoryRepository.findById(1)));
-//			tradeItemRepository.save(new TradeItem(new LogRecord(user,"0000000006","Juneberries"),tradeItemCategoryRepository.findById(1)));
-//			tradeItemRepository.save(new TradeItem(new LogRecord(user,"0000000007","Huckleberries"),tradeItemCategoryRepository.findById(1)));
-//			tradeItemRepository.save(new TradeItem(new LogRecord(user,"0000000008","Chokecherry"),tradeItemCategoryRepository.findById(1)));
-//			tradeItemRepository.save(new TradeItem(new LogRecord(user,"0000000009","Buffaloberry"),tradeItemCategoryRepository.findById(1)));
-//			tradeItemRepository.save(new TradeItem(new LogRecord(user,"0000000010","Moose Calves"),tradeItemCategoryRepository.findById(1)));
-//			tradeItemRepository.save(new TradeItem(new LogRecord(user,"0000000011","Deer Fawns"),tradeItemCategoryRepository.findById(1)));
-//			tradeItemRepository.save(new TradeItem(new LogRecord(user,"0000000012","Ground Squirrels"),tradeItemCategoryRepository.findById(1)));
-//			tradeItemRepository.save(new TradeItem(new LogRecord(user,"0000000013","Bees (Adults & Larvae)"),tradeItemCategoryRepository.findById(1)));
-//			tradeItemRepository.save(new TradeItem(new LogRecord(user,"0000000014","Carrion"),tradeItemCategoryRepository.findById(1)));
-//			tradeItemRepository.save(new TradeItem(new LogRecord(user,"0000000015","Aquatic Plants"),tradeItemCategoryRepository.findById(1)));
+//			tradeItemRepository.save(new TradeItem(new LogRecord(user),"0000000001","Honey",tradeItemCategoryRepository.findById(1)));
+//			tradeItemRepository.save(new TradeItem(new LogRecord(user),"0000000002","Steelhead Salmon",tradeItemCategoryRepository.findById(1)));
+//			tradeItemRepository.save(new TradeItem(new LogRecord(user),"0000000003","Sockeye Salmon",tradeItemCategoryRepository.findById(1)));
+//			tradeItemRepository.save(new TradeItem(new LogRecord(user),"0000000004","Rainbow Trout",tradeItemCategoryRepository.findById(1)));
+//			tradeItemRepository.save(new TradeItem(new LogRecord(user),"0000000005","Sarsaparilla Berries",tradeItemCategoryRepository.findById(7)));
+//			tradeItemRepository.save(new TradeItem(new LogRecord(user),"0000000006","Juneberries",tradeItemCategoryRepository.findById(3)));
+//			tradeItemRepository.save(new TradeItem(new LogRecord(user),"0000000007","Huckleberries",tradeItemCategoryRepository.findById(2)));
+//			tradeItemRepository.save(new TradeItem(new LogRecord(user),"0000000008","Chokecherry",tradeItemCategoryRepository.findById(6)));
+//			tradeItemRepository.save(new TradeItem(new LogRecord(user),"0000000009","Buffaloberry",tradeItemCategoryRepository.findById(4)));
+//			tradeItemRepository.save(new TradeItem(new LogRecord(user),"0000000010","Moose Calves",tradeItemCategoryRepository.findById(2)));
+//			tradeItemRepository.save(new TradeItem(new LogRecord(user),"0000000011","Deer Fawns",tradeItemCategoryRepository.findById(1)));
+//			tradeItemRepository.save(new TradeItem(new LogRecord(user),"0000000012","Ground Squirrels",tradeItemCategoryRepository.findById(5)));
+//			tradeItemRepository.save(new TradeItem(new LogRecord(user),"0000000013","Bees (Adults & Larvae)",tradeItemCategoryRepository.findById(5)));
+//			tradeItemRepository.save(new TradeItem(new LogRecord(user),"0000000014","Carrion",tradeItemCategoryRepository.findById(4)));
+//			tradeItemRepository.save(new TradeItem(new LogRecord(user),"0000000015","Aquatic Plants",tradeItemCategoryRepository.findById(6)));
 //
 //		};
 //	}
-

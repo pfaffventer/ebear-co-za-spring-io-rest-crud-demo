@@ -2,6 +2,7 @@ package ebear.co.za.spring.io.rest.crud.demo.trade.item.model;
 
 import javax.persistence.Column;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,7 +15,7 @@ import ebear.co.za.spring.io.rest.crud.demo.base.model.LogModel;
 import ebear.co.za.spring.io.rest.crud.demo.base.model.LogRecord;
 
 @Entity
-@Table(name = "TRADE_ITEM", uniqueConstraints=@UniqueConstraint(columnNames={"CODE"}))
+@Table(name = "TRADE_ITEM", uniqueConstraints=@UniqueConstraint(columnNames={"ITEM_CODE"}))
 public class TradeItem extends LogModel {
 
 	@Id
@@ -22,14 +23,22 @@ public class TradeItem extends LogModel {
     @GeneratedValue
     private long id;
 
+	@Column(name = "ITEM_CODE",columnDefinition = "VARCHAR(50) NOT NULL")
+	private String itemCode;
+
+	@Column(name = "ITEM_DESCRIPTION",columnDefinition = "VARCHAR(255) NOT NULL")
+	private String itemDescription;
+
 	@ManyToOne
 	@JoinColumn(name = "CATEGORY_ID")
 	private TradeItemCategory tradeItemCategory;
 	
 	public TradeItem() {}
 
-	public TradeItem(LogRecord log, TradeItemCategory tradeItemCategory) {
+	public TradeItem(LogRecord log, String itemCode, String itemDescription, TradeItemCategory tradeItemCategory) {
 		super(log);
+		this.itemCode = itemCode;
+		this.itemDescription = itemDescription;
 		this.tradeItemCategory = tradeItemCategory;
 	}
 
@@ -41,6 +50,22 @@ public class TradeItem extends LogModel {
 		this.id = id;
 	}
 
+	public String getItemCode() {
+		return itemCode;
+	}
+
+	public void setItemCode(String itemCode) {
+		this.itemCode = itemCode;
+	}
+
+	public String getItemDescription() {
+		return itemDescription;
+	}
+
+	public void setItemDescription(String itemDescription) {
+		this.itemDescription = itemDescription;
+	}
+
 	public TradeItemCategory getTradeItemCategory() {
 		return tradeItemCategory;
 	}
@@ -49,6 +74,4 @@ public class TradeItem extends LogModel {
 		this.tradeItemCategory = tradeItemCategory;
 	}
 
-	
-	
 }

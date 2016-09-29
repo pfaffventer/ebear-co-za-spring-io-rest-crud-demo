@@ -8,12 +8,6 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public class LogModel {
 
-	@Column(name = "CODE",columnDefinition = "VARCHAR(50) NOT NULL")
-	private String code;
-
-	@Column(name = "DESCRIPTION",columnDefinition = "VARCHAR(255) NOT NULL")
-	private String description;
-
 	@Column(columnDefinition = "TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
 	private Timestamp logTime;
 	
@@ -25,24 +19,6 @@ public class LogModel {
 	public LogModel(LogRecord log) {
 		super();
 		this.logUser = log.getLogUser();
-		this.code = log.getCode();
-		this.description = log.getDescription();
-	}
-
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
 	}
 
 	public Timestamp getLogTime() {
@@ -61,5 +37,4 @@ public class LogModel {
 		this.logUser = logUser;
 	}
 
-	
 }

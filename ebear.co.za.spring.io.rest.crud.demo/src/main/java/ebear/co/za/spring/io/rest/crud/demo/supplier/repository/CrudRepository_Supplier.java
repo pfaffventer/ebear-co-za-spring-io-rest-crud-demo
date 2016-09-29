@@ -11,6 +11,6 @@ public interface CrudRepository_Supplier extends CrudRepository<Supplier, Long> 
 
 	Supplier findById(@Param("id") long id);
 
-	Supplier findByCode(@Param("code") String code);
+	Supplier findBySupplierCode(@Param("supplierCode") String supplierCode);
 
 }
