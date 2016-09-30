@@ -27,8 +27,8 @@ public class QueryRepository implements Repository<String, Long> {
 		sql = "select"
 				+ "  i.item_code"
 				+ " ,i.item_description"
-				+ " ,i.log_time"
-				+ " ,i.log_user"
+				+ " ,i.create_time"
+				+ " ,i.create_user"
 				+ " from trade_item i";
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<TradeItemQuery>(TradeItemQuery.class));
 	}

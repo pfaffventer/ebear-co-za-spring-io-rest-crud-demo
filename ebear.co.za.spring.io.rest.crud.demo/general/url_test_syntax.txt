@@ -3,9 +3,7 @@
 
 http://localhost:8080/supplier/create/supplierCode?supplierCode=NEW777
 
-http://localhost:8080/supplier/update-description?supplierCode=NEW777&supplierDescription=UDATED
-
-http://localhost:8080/supplier/delete?supplierCode=NEW777
+http://localhost:8080/supplier/delete/supplierCode?supplierCode=NEW777
 
 
 ##DEBUG
@@ -15,4 +13,10 @@ http://localhost:8080/supplier/read/id?id=1
 http://localhost:8080/supplier/read/supplierCode?supplierCode=MSB001
 
 
-
+POST SAMPLE
+{
+  "logTime" : "2016-09-29T06:11:77.000+0000",
+  "logUser" : "johanv",
+  "supplierCode" : "NFS001",
+  "supplierDescription" : "Nome Fisheries AK"
+}

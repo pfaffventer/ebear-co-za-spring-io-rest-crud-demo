@@ -24,8 +24,8 @@ DROP TABLE IF EXISTS `supplier`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `supplier` (
   `supplier_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `log_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `log_user` varchar(255) NOT NULL,
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `create_user` varchar(255) NOT NULL,
   `supplier_code` varchar(50) NOT NULL,
   `supplier_description` varchar(255) NOT NULL,
   PRIMARY KEY (`supplier_id`),
@@ -52,8 +52,8 @@ DROP TABLE IF EXISTS `trade_item`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `trade_item` (
   `item_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `log_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `log_user` varchar(255) NOT NULL,
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `create_user` varchar(255) NOT NULL,
   `item_code` varchar(50) NOT NULL,
   `item_description` varchar(255) NOT NULL,
   `category_id` bigint(20) DEFAULT NULL,
@@ -83,8 +83,8 @@ DROP TABLE IF EXISTS `trade_item_category`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `trade_item_category` (
   `category_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `log_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `log_user` varchar(255) NOT NULL,
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `create_user` varchar(255) NOT NULL,
   `category_code` varchar(50) NOT NULL,
   `category_description` varchar(255) NOT NULL,
   PRIMARY KEY (`category_id`),

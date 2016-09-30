@@ -1,10 +1,12 @@
 package ebear.co.za.spring.io.rest.crud.demo.trade.item.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RestController;
 
 import ebear.co.za.spring.io.rest.crud.demo.trade.item.repository.CrudRepository_TradeItem;
 
+@Transactional
 @RestController
 public class Controller_TradeItem {
 

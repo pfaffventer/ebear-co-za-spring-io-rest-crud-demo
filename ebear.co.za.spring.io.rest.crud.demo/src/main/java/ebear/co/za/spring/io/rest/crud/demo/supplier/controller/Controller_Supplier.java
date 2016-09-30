@@ -1,21 +1,30 @@
 package ebear.co.za.spring.io.rest.crud.demo.supplier.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ebear.co.za.spring.io.rest.crud.demo.base.model.LogRecord;
+import ebear.co.za.spring.io.rest.crud.demo.constant.CrudAction;
 import ebear.co.za.spring.io.rest.crud.demo.supplier.model.Supplier;
+import ebear.co.za.spring.io.rest.crud.demo.supplier.model.SupplierTrace;
 import ebear.co.za.spring.io.rest.crud.demo.supplier.repository.CrudRepository_Supplier;
+import ebear.co.za.spring.io.rest.crud.demo.supplier.repository.CrudRepository_SupplierTrace;
 
+@Transactional
 @RestController
 public class Controller_Supplier {
 
 	@Autowired
 	CrudRepository_Supplier supplierRepository;
+
+	@Autowired
+	CrudRepository_SupplierTrace supplierTraceRepository;
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	 * CREATE NEW SUPPLIER
@@ -45,37 +54,6 @@ public class Controller_Supplier {
 		}
 		return new ResponseEntity<Supplier>(supplier, HttpStatus.OK);		
 	}
-
-	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	 * DELETE SUPPLIER
-	 *
-	 * GET - delete a supplier where supplier_id = ? 
-	 */
-	@RequestMapping("/supplier/delete/id")
-	public String delete(long id) {
-		try {
-			supplierRepository.delete(supplierRepository.findById(id));
-		}
-		catch (Exception e) {
-			return "Error deleting supplier: " + "[" + id + "] "+ e.toString();
-		}
-		return "Supplier: " + id + " succesfully deleted";
-	}
-
-	/*
-	 * GET - delete a supplier where supplier_code = ? 
-	 */
-	@RequestMapping("/supplier/delete/supplierCode")
-	public String delete(String supplierCode) {
-		try {
-			supplierRepository.delete(supplierRepository.findBySupplierCode(supplierCode));
-		}
-		catch (Exception e) {
-			return "Error deleting supplier: " + "[" + supplierCode + "] "+ e.toString();
-		}
-		return "Supplier: " + supplierCode + " succesfully deleted";
-	}
-
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	 * READ SUPPLIER
@@ -115,11 +93,10 @@ public class Controller_Supplier {
 		return new ResponseEntity<Supplier>(supplier, HttpStatus.OK);		
 	}
 
-
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	 * READ SUPPLIER
+	 * UPDATE SUPPLIER
 	 *
-	 * POST - read supplier where supplier_id = ?
+	 * POST - save supplier
 	 */
 	@RequestMapping("/supplier/save/")
 	public ResponseEntity<Supplier> save(@RequestBody Supplier supplierToSave) {
@@ -127,6 +104,7 @@ public class Controller_Supplier {
 		Supplier savedSupplier = null;
 		try {
 			currentSupplier = supplierRepository.findBySupplierCode(supplierToSave.getSupplierCode());
+			supplierTraceRepository.save(new SupplierTrace(System.getProperty("user.name"),CrudAction.UPDATE,currentSupplier));
 			currentSupplier.setSupplierDescription(supplierToSave.getSupplierDescription());
 			savedSupplier = supplierRepository.save(currentSupplier);
 		} catch (Exception e) {
@@ -135,5 +113,36 @@ public class Controller_Supplier {
 		return new ResponseEntity<Supplier>(savedSupplier, HttpStatus.OK);		
 	}
 
+	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	 * DELETE SUPPLIER
+	 *
+	 * GET - delete a supplier where supplier_id = ? 
+	 */
+	@RequestMapping("/supplier/delete/id")
+	public String delete(long id) {
+		try {
+			supplierTraceRepository.save(new SupplierTrace(System.getProperty("user.name"),CrudAction.DELETE,supplierRepository.findById(id)));
+			supplierRepository.delete(supplierRepository.findById(id));
+		}
+		catch (Exception e) {
+			return "Error deleting supplier: " + "[" + id + "] "+ e.toString();
+		}
+		return "Supplier: " + id + " succesfully deleted";
+	}
+
+	/*
+	 * GET - delete a supplier where supplier_code = ? 
+	 */
+	@RequestMapping("/supplier/delete/supplierCode")
+	public String delete(String supplierCode) {
+		try {
+			supplierTraceRepository.save(new SupplierTrace(System.getProperty("user.name"),CrudAction.DELETE,supplierRepository.findBySupplierCode(supplierCode)));
+			supplierRepository.delete(supplierRepository.findBySupplierCode(supplierCode));
+		}
+		catch (Exception e) {
+			return "Error deleting supplier: " + "[" + supplierCode + "] "+ e.toString();
+		}
+		return "Supplier: " + supplierCode + " succesfully deleted";
+	}
 
 }

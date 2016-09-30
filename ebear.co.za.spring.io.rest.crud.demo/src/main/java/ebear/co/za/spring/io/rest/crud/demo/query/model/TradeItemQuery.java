@@ -6,20 +6,20 @@ public class TradeItemQuery {
 	
 	private String tradeItemCode;
 	private String tradeItemDescription;
-	private Timestamp logTime;
-	private String logUser;
+	private Timestamp createTime;
+	private String createUser;
 
 	public TradeItemQuery() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public TradeItemQuery(String tradeItemCode, String tradeItemDescription, Timestamp logTime, String logUser) {
+	public TradeItemQuery(String tradeItemCode, String tradeItemDescription, Timestamp createTime, String createUser) {
 		super();
 		this.tradeItemCode = tradeItemCode;
 		this.tradeItemDescription = tradeItemDescription;
-		this.logTime = logTime;
-		this.logUser = logUser;
+		this.createTime = createTime;
+		this.createUser = createUser;
 	}
 
 	public String getTradeItemCode() {
@@ -38,20 +38,20 @@ public class TradeItemQuery {
 		this.tradeItemDescription = tradeItemDescription;
 	}
 
-	public Timestamp getLogTime() {
-		return logTime;
+	public Timestamp getCreateTime() {
+		return createTime;
 	}
 
-	public void setLogTime(Timestamp logTime) {
-		this.logTime = logTime;
+	public void setCreateTime(Timestamp createTime) {
+		this.createTime = createTime;
 	}
 
-	public String getLogUser() {
-		return logUser;
+	public String getCreateUser() {
+		return createUser;
 	}
 
-	public void setLogUser(String logUser) {
-		this.logUser = logUser;
+	public void setCreateUser(String createUser) {
+		this.createUser = createUser;
 	}
 
 }

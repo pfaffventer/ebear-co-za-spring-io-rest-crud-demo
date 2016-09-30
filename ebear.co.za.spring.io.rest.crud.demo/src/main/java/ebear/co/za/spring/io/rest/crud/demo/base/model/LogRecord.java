@@ -2,19 +2,19 @@ package ebear.co.za.spring.io.rest.crud.demo.base.model;
 
 public class LogRecord {
 
-	private String logUser;
+	private String createUser;
 	
-	public LogRecord(String logUser) {
+	public LogRecord(String createUser) {
 		super();
-		this.logUser = logUser;
+		this.createUser = createUser;
 	}
 
-	public String getLogUser() {
-		return logUser;
+	public String getCreateUser() {
+		return createUser;
 	}
 
-	public void setLogUser(String logUser) {
-		this.logUser = logUser;
+	public void setCreateUser(String createUser) {
+		this.createUser = createUser;
 	}
 
 }

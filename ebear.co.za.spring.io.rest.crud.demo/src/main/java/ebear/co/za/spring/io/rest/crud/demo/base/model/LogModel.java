@@ -9,32 +9,32 @@ import javax.persistence.MappedSuperclass;
 public class LogModel {
 
 	@Column(columnDefinition = "TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
-	private Timestamp logTime;
+	private Timestamp createTime;
 	
 	@Column(columnDefinition = "VARCHAR(255) NOT NULL")
-	private String logUser;
+	private String createUser;
 
 	public LogModel() {}
 	
 	public LogModel(LogRecord log) {
 		super();
-		this.logUser = log.getLogUser();
+		this.createUser = log.getCreateUser();
 	}
 
-	public Timestamp getLogTime() {
-		return logTime;
+	public Timestamp getCreateTime() {
+		return createTime;
 	}
 
-	public void setLogTime(Timestamp logTime) {
-		this.logTime = logTime;
+	public void setCreateTime(Timestamp createTime) {
+		this.createTime = createTime;
 	}
 
-	public String getLogUser() {
-		return logUser;
+	public String getCreateUser() {
+		return createUser;
 	}
 
-	public void setLogUser(String logUser) {
-		this.logUser = logUser;
+	public void setCreateUser(String createUser) {
+		this.createUser = createUser;
 	}
 
 }
