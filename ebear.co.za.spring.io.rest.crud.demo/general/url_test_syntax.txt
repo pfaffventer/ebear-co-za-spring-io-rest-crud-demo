@@ -5,10 +5,7 @@ http://localhost:8080/supplier/create/supplierCode?supplierCode=NEW777
 
 http://localhost:8080/supplier/delete/supplierCode?supplierCode=NEW777
 
-
 ##DEBUG
-
-http://localhost:8080/supplier/read/id?id=1
 
 http://localhost:8080/supplier/read/supplierCode?supplierCode=MSB001
 
@@ -20,3 +17,13 @@ POST SAMPLE
   "supplierCode" : "NFS001",
   "supplierDescription" : "Nome Fisheries AK"
 }
+
+
+##TRADE ITEM
+
+http://localhost:8080/trade/item/create/itemCode?itemCode=NEW777
+
+http://localhost:8080/trade/item/delete/itemCode?itemCode=NEW777
+
+http://localhost:8080/trade/item/read/id?id=7
+

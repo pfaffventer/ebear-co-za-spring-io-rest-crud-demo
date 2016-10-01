@@ -20,8 +20,8 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "SUPPLIER_TRACE")
-public class SupplierTrace {
+@Table(name = "SUPPLIER_SHADOW")
+public class SupplierShadow {
 
 	/*
 	 * Trace entity columns
@@ -64,12 +64,12 @@ public class SupplierTrace {
 	@Column(name = "SUPPLIER_DESCRIPTION",columnDefinition = "VARCHAR(255) NOT NULL")
 	private String supplierDescription;
 
-	public SupplierTrace() {}
+	public SupplierShadow() {}
 
 	/*
 	 * constructor to create trace from entity
 	 */
-	public SupplierTrace(String traceUser,String traceAction, Supplier supplier) {
+	public SupplierShadow(String traceUser,String traceAction, Supplier supplier) {
 		this.traceUser = traceUser;
 		this.traceAction = traceAction;
 		this.createUser = supplier.getCreateUser();

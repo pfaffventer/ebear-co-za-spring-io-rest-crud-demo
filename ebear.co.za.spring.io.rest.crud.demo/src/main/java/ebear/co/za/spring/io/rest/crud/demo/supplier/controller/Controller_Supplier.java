@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ebear.co.za.spring.io.rest.crud.demo.base.model.LogRecord;
 import ebear.co.za.spring.io.rest.crud.demo.constant.CrudAction;
 import ebear.co.za.spring.io.rest.crud.demo.supplier.model.Supplier;
-import ebear.co.za.spring.io.rest.crud.demo.supplier.model.SupplierTrace;
+import ebear.co.za.spring.io.rest.crud.demo.supplier.model.SupplierShadow;
 import ebear.co.za.spring.io.rest.crud.demo.supplier.repository.CrudRepository_Supplier;
 import ebear.co.za.spring.io.rest.crud.demo.supplier.repository.CrudRepository_SupplierTrace;
 
@@ -50,32 +50,14 @@ public class Controller_Supplier {
 		try {
 			supplier = supplierRepository.save(newSupplier);
 		} catch (Exception e) {
-			return new ResponseEntity<Supplier>(supplier, HttpStatus.NOT_EXTENDED);	
+			return new ResponseEntity<Supplier>(supplier, HttpStatus.NOT_FOUND);	
 		}
 		return new ResponseEntity<Supplier>(supplier, HttpStatus.OK);		
 	}
 
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	 * READ SUPPLIER
-	 *
-	 * GET - read supplier where supplier_id = ?
-	 */
-	@RequestMapping("/supplier/read/id")
-	public ResponseEntity<Supplier> read(long id) {
-		Supplier supplier = null;
-		try {
-			supplier = supplierRepository.findById(id);
-			if(supplier==null) {
-				return new ResponseEntity<Supplier>(supplier, HttpStatus.NOT_FOUND);
-			}
-		} catch (Exception e) {
-			return new ResponseEntity<Supplier>(supplier, HttpStatus.NOT_EXTENDED);	
-
-		}
-		return new ResponseEntity<Supplier>(supplier, HttpStatus.OK);		
-	}
-
-	/*
+	 * 
 	 * GET - read supplier where supplier_code = ?
 	 */
 	@RequestMapping("/supplier/read/supplierCode")
@@ -87,7 +69,7 @@ public class Controller_Supplier {
 				return new ResponseEntity<Supplier>(supplier, HttpStatus.NOT_FOUND);
 			}
 		} catch (Exception e) {
-			return new ResponseEntity<Supplier>(supplier, HttpStatus.NOT_EXTENDED);	
+			return new ResponseEntity<Supplier>(supplier, HttpStatus.NOT_FOUND);	
 
 		}
 		return new ResponseEntity<Supplier>(supplier, HttpStatus.OK);		
@@ -104,11 +86,11 @@ public class Controller_Supplier {
 		Supplier savedSupplier = null;
 		try {
 			currentSupplier = supplierRepository.findBySupplierCode(supplierToSave.getSupplierCode());
-			supplierTraceRepository.save(new SupplierTrace(System.getProperty("user.name"),CrudAction.UPDATE,currentSupplier));
+			supplierTraceRepository.save(new SupplierShadow(System.getProperty("user.name"),CrudAction.UPDATE,currentSupplier));
 			currentSupplier.setSupplierDescription(supplierToSave.getSupplierDescription());
 			savedSupplier = supplierRepository.save(currentSupplier);
 		} catch (Exception e) {
-			return new ResponseEntity<Supplier>(savedSupplier, HttpStatus.NOT_EXTENDED);	
+			return new ResponseEntity<Supplier>(savedSupplier, HttpStatus.NOT_FOUND);	
 		}
 		return new ResponseEntity<Supplier>(savedSupplier, HttpStatus.OK);		
 	}
@@ -121,7 +103,7 @@ public class Controller_Supplier {
 	@RequestMapping("/supplier/delete/id")
 	public String delete(long id) {
 		try {
-			supplierTraceRepository.save(new SupplierTrace(System.getProperty("user.name"),CrudAction.DELETE,supplierRepository.findById(id)));
+			supplierTraceRepository.save(new SupplierShadow(System.getProperty("user.name"),CrudAction.DELETE,supplierRepository.findById(id)));
 			supplierRepository.delete(supplierRepository.findById(id));
 		}
 		catch (Exception e) {
@@ -136,7 +118,7 @@ public class Controller_Supplier {
 	@RequestMapping("/supplier/delete/supplierCode")
 	public String delete(String supplierCode) {
 		try {
-			supplierTraceRepository.save(new SupplierTrace(System.getProperty("user.name"),CrudAction.DELETE,supplierRepository.findBySupplierCode(supplierCode)));
+			supplierTraceRepository.save(new SupplierShadow(System.getProperty("user.name"),CrudAction.DELETE,supplierRepository.findBySupplierCode(supplierCode)));
 			supplierRepository.delete(supplierRepository.findBySupplierCode(supplierCode));
 		}
 		catch (Exception e) {

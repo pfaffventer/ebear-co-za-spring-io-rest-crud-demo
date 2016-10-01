@@ -11,4 +11,5 @@ public interface CrudRepository_TradeItem extends CrudRepository<TradeItem, Long
 
 	TradeItem findById(@Param("id") long id);
 
+	TradeItem findByItemCode(@Param("itemCode") String itemCode);
 }
