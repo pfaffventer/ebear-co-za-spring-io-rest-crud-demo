@@ -1,5 +1,8 @@
 package ebear.co.za.spring.io.rest.crud.demo.trade.item.model;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 
 
@@ -8,11 +11,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 import ebear.co.za.spring.io.rest.crud.demo.base.model.LogModel;
 import ebear.co.za.spring.io.rest.crud.demo.base.model.LogRecord;
+import ebear.co.za.spring.io.rest.crud.demo.sipplier.item.model.SupplierItem;
 
 @Entity
 @Table(name = "TRADE_ITEM", uniqueConstraints=@UniqueConstraint(columnNames={"ITEM_CODE"}))
@@ -32,7 +37,10 @@ public class TradeItem extends LogModel {
 	@ManyToOne
 	@JoinColumn(name = "CATEGORY_ID")
 	private TradeItemCategory tradeItemCategory;
-	
+
+	@OneToMany(mappedBy = "tradeItem", cascade = CascadeType.ALL)
+	private Set<SupplierItem> suppliers;
+
 	public TradeItem() {}
 
 	public TradeItem(LogRecord log, String itemCode, String itemDescription, TradeItemCategory tradeItemCategory) {
@@ -72,6 +80,14 @@ public class TradeItem extends LogModel {
 
 	public void setTradeItemCategory(TradeItemCategory tradeItemCategory) {
 		this.tradeItemCategory = tradeItemCategory;
+	}
+
+	public Set<SupplierItem> getSuppliers() {
+		return suppliers;
+	}
+
+	public void setSuppliers(Set<SupplierItem> suppliers) {
+		this.suppliers = suppliers;
 	}
 
 }

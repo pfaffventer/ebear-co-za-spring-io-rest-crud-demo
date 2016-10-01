@@ -1,15 +1,20 @@
 package ebear.co.za.spring.io.rest.crud.demo.supplier.model;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 import ebear.co.za.spring.io.rest.crud.demo.base.model.LogModel;
 import ebear.co.za.spring.io.rest.crud.demo.base.model.LogRecord;
+import ebear.co.za.spring.io.rest.crud.demo.sipplier.item.model.SupplierItem;
 
 @Entity
 @Table(name = "SUPPLIER", uniqueConstraints=@UniqueConstraint(columnNames={"SUPPLIER_CODE"}))
@@ -27,6 +32,9 @@ public class Supplier extends LogModel {
 	private String supplierDescription;
 
 	public Supplier() {}
+	
+	@OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL)
+	private Set<SupplierItem> tradeItems;
 
 	public Supplier(LogRecord log, String supplierCode, String supplierDescription) {
 		super(log);
@@ -56,6 +64,14 @@ public class Supplier extends LogModel {
 
 	public void setSupplierDescription(String supplierDescription) {
 		this.supplierDescription = supplierDescription;
+	}
+
+	public Set<SupplierItem> getTradeItems() {
+		return tradeItems;
+	}
+
+	public void setTradeItems(Set<SupplierItem> tradeItems) {
+		this.tradeItems = tradeItems;
 	}
 
 }
